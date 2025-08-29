@@ -19,7 +19,9 @@ class UserModel {
       username: json['username'],
       email: json['email'],
       createdAt: DateTime.parse(json['created_at']),
-      isBanned: json['is_banned'],
+      isBanned: json['is_banned'] is bool
+          ? json['is_banned']
+          : json['is_banned'] == 1,
     );
   }
 
@@ -31,5 +33,21 @@ class UserModel {
       'created_at': createdAt.toIso8601String(),
       'is_banned': isBanned,
     };
+  }
+
+  UserModel copyWith({
+    String? id,
+    String? username,
+    String? email,
+    DateTime? createdAt,
+    bool? isBanned,
+  }) {
+    return UserModel(
+      id: id ?? this.id,
+      username: username ?? this.username,
+      email: email ?? this.email,
+      createdAt: createdAt ?? this.createdAt,
+      isBanned: isBanned ?? this.isBanned,
+    );
   }
 }

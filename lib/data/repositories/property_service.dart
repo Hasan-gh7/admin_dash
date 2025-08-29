@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import '../models/property_model.dart';
 
 class PropertyService {
-  final String baseUrl = 'https://your-api-url.com/api';
+  final String baseUrl = 'https://9551f9a14c9f.ngrok-free.app/api';
 
   Future<List<PropertyModel>> fetchProperties() async {
     final response = await http.get(Uri.parse('$baseUrl/properties'));

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:real_estate_dashboard/logic/blocs/auth_bloc/auth_bloc.dart';
+import 'package:real_estate_dashboard/logic/blocs/auth_bloc/auth_event.dart';
 
 class AdminSidebar extends StatelessWidget {
   const AdminSidebar({super.key});
@@ -20,7 +23,7 @@ class AdminSidebar extends StatelessWidget {
             leading: const Icon(Icons.dashboard),
             title: const Text("لوحة التحكم"),
             onTap: () {
-             Navigator.pushNamed(context, '/admin_dashboard');
+              Navigator.pushNamed(context, '/admin_dashboard');
             },
           ),
           ListTile(
@@ -38,31 +41,31 @@ class AdminSidebar extends StatelessWidget {
             },
           ),
           ListTile(
+            leading: const Icon(Icons.logout),
+            title: const Text("تسجيل الخروج"),
+            onTap: () {
+              Navigator.of(context).pop();
+              context.read<AuthBloc>().add(LogoutRequested());
+            },
+          ),          ListTile(
             leading: const Icon(Icons.book_online),
             title: const Text("إدارة الحجوزات"),
             onTap: () {
-              // يمكنك إضافة التنقل لاحقًا
+              Navigator.pushNamed(context, '/bookings');
             },
           ),
           ListTile(
             leading: const Icon(Icons.bar_chart),
             title: const Text("التقارير والإحصائيات"),
             onTap: () {
-              // يمكنك إضافة التنقل لاحقًا
+              Navigator.pushNamed(context, '/reports');
             },
           ),
           ListTile(
             leading: const Icon(Icons.account_balance),
             title: const Text("المحافظ المالية"),
             onTap: () {
-              // يمكنك إضافة التنقل لاحقًا
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.logout),
-            title: const Text("تسجيل الخروج"),
-            onTap: () {
-              // يمكنك تنفيذ تسجيل الخروج هنا
+              Navigator.pushNamed(context, '/wallets');
             },
           ),
         ],

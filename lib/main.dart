@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:real_estate_dashboard/logic/blocs/auth_bloc/auth_bloc.dart';
 import 'package:real_estate_dashboard/presentation/screens/add_property_screen.dart';
 import 'package:real_estate_dashboard/presentation/screens/admin_dashboard_screen.dart';
+import 'package:real_estate_dashboard/presentation/screens/booking_management_page.dart';
 import 'package:real_estate_dashboard/presentation/screens/property_management_screen.dart';
 import 'data/services/auth_service.dart';
 import 'presentation/screens/login_screen.dart';
@@ -28,12 +29,14 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       ),
-      home: const LoginScreen(),
+      home:  BookingManagementPage() ,
       routes: {
-        '/users': (context) => const UserManagementScreen(),
-        '/properties': (context) => const PropertyManagementScreen(),
+        '/users': (context) => const UserScreen(),
+        '/properties': (context) =>  PropertyManagementPage(),
         '/add-property': (context) => const AddPropertyScreen(),
         '/admin_dashboard':(context)=> const AdminDashboardScreen(),
+        '/login':(context)=>  LoginScreen() ,
+        '/booking':(context)=> BookingManagementPage() ,
       },
     ); 
   }
